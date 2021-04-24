@@ -128,18 +128,22 @@ manière anti-chronologique.
 Un script doit permettre de déployer l’application sur un serveur
 comportant Node et MySQL ou SQLite. En outre le script de déploiement
 doit automatiquement :
+
 • ● créer toutes les tables nécessaires à l’application
+
 • ● créer les utilisateurs (login/password) : max/max et bob/bob
+
 • ● créer un partage de lien de max : http://google.fr
-•
+
 ● créer un commentaire de bob : Excellent site pour faire des
 recherches!
+
 ● ajouter un upvote de max pour la réponse de bob
 Le script doit impérativement se trouver à la racine du projet et se
 nommer : install.js .
 
 #Contraintes
-•
+
 ● Bien entendu l’application doivent être le plus robuste
 possible à la saisie d’information erronées (mail dans un format non
 valide, etc...).etc...).
@@ -154,6 +158,7 @@ utilisateur puisse modifier des questions qu’il n’a pas posté.
 
 #Bonus
 Un bonus sera alloué aux groupes qui :
+
 • - Ajouteront la possibilité de mettre des liens en favoris et de
 les voir sur sa page de profil.
 
