@@ -16,6 +16,7 @@ dynamique côté serveur . Vous serez notés sur les éléments suivants :
 • ● Qualité du code SQL (sur 2)
 
 Voici la liste des technologies qui sont autorisées dans le projet :
+
 • ● HTML
 
 • ● CSS
@@ -47,8 +48,8 @@ Liste des fonctionnalités implémentées et non implémentées
 Architecture
 -----------
 
-src/views/ chier1.jade : description du chier 1
-src/ chier2.js : description du chier 2.
+src/views/ fichier1.jade : description du fichier 1
+src/ fichier2.js : description du fichier 2.
 ..
 
 Les description doivent être courtes et indiquer clairement quelles sont les
