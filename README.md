@@ -8,16 +8,24 @@ but de vous faire développer une application web utilisant l’architecture
 dynamique côté serveur . Vous serez notés sur les éléments suivants :
 
 • ● Qualité du code HTML5 et CSS (sur 6)
+
 • ● Ergonomie du site (sur 6)
+
 • ● Qualité du code Javascript (node) (sur 6)
+
 • ● Qualité du code SQL (sur 2)
 
 Voici la liste des technologies qui sont autorisées dans le projet :
 • ● HTML
+
 • ● CSS
+
 • ● MySQL (ou SQLite)
+
 • ● Javascript (Node)
+
 • ● JavaScript
+
 • ● Jade/Pug
 
 Enfin faites particulièrement attention à la copie , j’utilise un logiciel qui
@@ -29,11 +37,16 @@ dans un répertoire src ainsi qu’un rapport au format texte brut, nommé
 readme.txt . 
 
 La partie architecture doit décrire l’intégralité des fichiers
-contenus dans votre application.Fonctionnalité
+contenus dans votre application.
+
+Fonctionnalité
 --------------
+
 Liste des fonctionnalités implémentées et non implémentées
-Architectur
+
+Architecture
 -----------
+
 src/views/ chier1.jade : description du chier 1
 src/ chier2.js : description du chier 2.
 ..
@@ -129,8 +142,10 @@ nommer : install.js .
 ● Bien entendu l’application doivent être le plus robuste
 possible à la saisie d’information erronées (mail dans un format non
 valide, etc...).etc...).
+
 • ● Des messages d’erreurs clairs doivent être affichés en cas
 de problème avec l’application.
+
 • ● L’application doit être sécurisée. Il ne doit pas être possible
 d’accéder aux informations d’un utilisateur sans avoir rentré au
 moins une fois son mail et mot de passe. Il ne faut non plus qu’un
@@ -140,8 +155,10 @@ utilisateur puisse modifier des questions qu’il n’a pas posté.
 Un bonus sera alloué aux groupes qui :
 • - Ajouteront la possibilité de mettre des liens en favoris et de
 les voir sur sa page de profil.
+
 • - La possibilité de créer comme des “sub-reddit”, qui ne sont
 autre que des “catégories” ou liens peuvent être publiés, chaque
 sub-reddit ayant sa propre page.
+
 • - De la même manière vous pouvez implémenter des
 fonctionnalités supplémentaires, après discussion avec l’enseignant.
