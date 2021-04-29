@@ -4,7 +4,7 @@
   "description": "Reddit fork",
   "main": "main.js",
   "scripts": {
-    "test": node src/JS/main.js
+    "test": node 'src/JS/main.js'
   },
 
 {
