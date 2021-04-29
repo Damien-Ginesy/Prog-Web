@@ -27,4 +27,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm build --if-present
-    - run: npm src/JS/main.js
+    - run: npm test src/JS/main.js
