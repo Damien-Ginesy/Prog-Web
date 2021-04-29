@@ -1,4 +1,13 @@
 {
+  "name": "Reddit-Fork",
+  "version": "1.0.0",
+  "description": "Reddit fork",
+  "main": "main.js",
+  "scripts": {
+    "test": node src/JS/main.js
+  },
+
+{
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
