@@ -1,0 +1,23 @@
+extends layout 
+
+block title 
+    title Nouveau Compte 
+block append head 
+    link(rel='stylesheet', href='/styles/login.css', type='text/css')
+
+block body  
+    main.form-login
+        form
+            img.mb-4(src='/images/Bienvenue.jpg', alt='', width='180', height='120')
+            h1.h3.mb-3.fw-normal Inscrivez vous
+            .form-floating
+                input#inputPseudo.form-control(type='text', placeholder='Toto')
+                label(for='inputPseudo') Pseudo
+            .form-floating
+                input#inputEmail.form-control(type='email', placeholder='name@example.com')
+                label(for='inputEmail') Adresse Mail
+            .form-floating
+                input#inputPassword.form-control(type='password', placeholder='Password')
+                label(for='inputPassword') Mot de Passe
+            a.link-primary(href='/') D&eacute;j&agrave; inscris ? Connecte toi.
+            button.w-100.btn.btn-lg.btn-primary(type='submit') Inscription

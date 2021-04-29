@@ -1,0 +1,20 @@
+extends layout
+
+block title 
+  title Login Page
+block append head
+  link(rel='stylesheet', href='/styles/login.css', type='text/css')
+
+block body
+  main.form-login
+    form
+      img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')
+      h1.h3.mb-3.fw-normal Connectez vous
+      .form-floating
+        input#inputEmail.form-control(type='email', placeholder='name@example.com')
+        label(for='inputEmail') Adresse Mail
+      .form-floating
+        input#inputPassword.form-control(type='password', placeholder='Password')
+        label(for='inputPassword') Mot de Passe
+      a.link-primary(href='/new_account') Pas encore de compte ? Inscrit toi.
+      button.w-100.btn.btn-lg.btn-primary(type='submit') Connexion
