@@ -1,0 +1,21 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "clean-css": "^5.1.2",
+    "constantinople": "^4.0.1",
+    "express": "^4.17.1",
+    "jade": "^1.11.0",
+    "uglify-js": "^3.13.4"
+  },
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Reddit Fork",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "dginesy",
+  "license": "ISC"
+}
