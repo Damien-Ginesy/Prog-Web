@@ -7,7 +7,7 @@ block append head
 
 block body  
     main.form-login
-        form
+        form(method='POST', action='/new_account')
             img.mb-4(src='/images/Bienvenue.jpg', alt='', width='180', height='120')
             h1.h3.mb-3.fw-normal Inscrivez vous
             .form-floating
@@ -19,5 +19,5 @@ block body
             .form-floating
                 input#inputPassword.form-control(type='password', placeholder='Password')
                 label(for='inputPassword') Mot de Passe
-            a.link-primary(href='/') D&eacute;j&agrave; inscris ? Connecte toi.
+            a.link-primary(href='/login') D&eacute;j&agrave; inscris ? Connecte toi.
             button.w-100.btn.btn-lg.btn-primary(type='submit') Inscription

@@ -1,0 +1,17 @@
+extends layout
+
+block title 
+  title Page d'acceuil
+
+block append head
+  link(rel='stylesheet', href='/styles/home.css', type='text/css')
+
+block body
+    nav.navbar
+        .container-fluid
+            a.navbar-brand(href='#')
+                img.d-inline-block.align-text-top(src='/images/android_black_24dp.svg', alt='', width='30', height='40')
+                a.navbar-brand(href='#') Redeirb
+            a.navbar-brand(href='/my_account')
+                img.d-inline-block.align-text-top(src='/images/account_circle_black_24dp.svg', alt='', width='30', height='40')
+                    

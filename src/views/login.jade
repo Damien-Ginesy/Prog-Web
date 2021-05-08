@@ -5,9 +5,9 @@ block title
 block append head
   link(rel='stylesheet', href='/styles/login.css', type='text/css')
 
-block body
+block body 
   main.form-login
-    form
+    form(method='POST', action='/login')
       img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')
       h1.h3.mb-3.fw-normal Connectez vous
       .form-floating

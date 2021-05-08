@@ -1,0 +1,14 @@
+html,
+body {
+    height: 100%;
+    background-color: darkgray;
+}
+
+.navbar{
+    width: 100%;
+    background-color:#ffffff;
+}
+
+.navbar-brand{
+    font-size:x-large;
+}

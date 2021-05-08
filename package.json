@@ -5,14 +5,15 @@
     "clean-css": "^5.1.2",
     "constantinople": "^4.0.1",
     "express": "^4.17.1",
-    "jade": "^1.11.0",
+    "express-session": "^1.17.1",
+    "jade": "^0.29.0",
+    "sqlite3": "^5.0.2",
     "uglify-js": "^3.13.4"
   },
   "name": "package.json",
   "version": "1.0.0",
   "description": "Reddit Fork",
   "main": "main.js",
-  "devDependencies": {},
   "scripts": {
     "test": "node src/JS/main.js"
   },
