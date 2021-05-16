@@ -8,10 +8,48 @@ block append head
 
 block body
     nav.navbar
-        .container-fluid
-            a.navbar-brand(href='#')
-                img.d-inline-block.align-text-top(src='/images/android_black_24dp.svg', alt='', width='30', height='40')
-                a.navbar-brand(href='#') Redeirb
-            a.navbar-brand(href='/my_account')
-                img.d-inline-block.align-text-top(src='/images/account_circle_black_24dp.svg', alt='', width='30', height='40')
+      .container-fluid
+        a.navbar-brand(href='#')
+          img.d-inline-block.align-text-top(src='https://waisso.com/wp-content/uploads/2019/04/reddit-logo-300x225.jpg', alt='', width='30', height='24')
+        a.position.navbar-brand(href='#') Redeirb
+        |             
+        |             
+        form(action='/', method='POST')
+          input#site-search(type='search', name='search', placeholder='Search', size='75')
+        |             
+        a.navbar-brand(href='/my_account')
+          img.d-inline-block.align-text-top(src='/images/account_circle_black_24dp.svg', alt='', width='30', height='24')
+    |   
+    |   
+    |   
+    |   
+    .card.container.mb-3(style='width: 28rem;')
+      .card-header.card_back(style='width: 28rem;')
+         | Posted by name , time ago
+      img.card-img-top(src='https://images.japan-experience.com/guide-japon/19668/s880x460/monvoisintotoro03.jpg 1700w', alt='Totoro', width='300px', height='200px')
+      |       
+      .card-body.text-center
+        h5.card-title  Vive Totoro!
+        |           
+        p.card-text
+          | Totoro est un personnage imaginaire du film &quot;Mon voisin Totoro&quot; r&eacute;alis&eacute; par Hayao Miyazaki.
+        |           
+        a(href='https://www.studioghibli.fr/les-films/mon-voisin-totoro/') https://www.studioghibli.fr/les-films/mon-voisin-totoro/
+      |       
+      .card-footer.text-muted.card_back(style='width: 28rem;')
+        p.card-text
+          small.text-muted.btn.card_button Comments 
+          small.text-muted.btn.card_button Share
+          small.text-muted.btn.card_button Save
+    |   
+    .card.container.text-center(style='width: 28rem;')
+      img.card-img-top(src='https://www.jvfrance.com/wp-content/uploads/2020/03/One-Punch-Man-A-Hero-Nobody-Knows-image-test.jpg', alt='One_punch_man', width='300px', height='200px')
+      |     
+      .card-body
+        h5.card-title  Vive Saitama!
+        |         
+        p.card-text Saitama est le personnage principal du manga &quot;One punch man&quot;.
+        |         
+        a.btn.btn-primary(href='https://onepunchman.fandom.com/fr/wiki/Wikia_One_Punch-Man') Link to see Saitama
+
                     
