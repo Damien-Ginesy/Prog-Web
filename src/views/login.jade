@@ -5,16 +5,16 @@ block title
 block append head
   link(rel='stylesheet', href='/styles/login.css', type='text/css')
 
-block body 
+block body  
   main.form-login
     form(method='POST', action='/login')
       img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')
       h1.h3.mb-3.fw-normal Connectez vous
       .form-floating
-        input#inputEmail.form-control(type='email', placeholder='name@example.com')
-        label(for='inputEmail') Adresse Mail
+        input#inputEmailLogin.form-control(type='email', name='inputEmailLogin', placeholder='name@example.com')
+        label(for='inputEmailLogin') Adresse Mail
       .form-floating
-        input#inputPassword.form-control(type='password', placeholder='Password')
-        label(for='inputPassword') Mot de Passe
+        input#inputPasswordLogin.form-control(type='password', name='inputPasswordLogin', placeholder='Password')
+        label(for='inputPasswordLogin') Mot de Passe
       a.link-primary(href='/new_account') Pas encore de compte ? Inscrit toi.
-      button.w-100.btn.btn-lg.btn-primary(type='submit') Connexion
+      button.w-100.btn.btn-lg.btn-primary(type='submit', value='Login') Connexion

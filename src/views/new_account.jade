@@ -8,16 +8,16 @@ block append head
 block body  
     main.form-login
         form(method='POST', action='/new_account')
-            img.mb-4(src='/images/Bienvenue.jpg', alt='', width='180', height='120')
+            img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')
             h1.h3.mb-3.fw-normal Inscrivez vous
             .form-floating
-                input#inputPseudo.form-control(type='text', placeholder='Toto')
+                input#inputPseudo.form-control(type='text', name='inputPseudo', placeholder='Toto')
                 label(for='inputPseudo') Pseudo
             .form-floating
-                input#inputEmail.form-control(type='email', placeholder='name@example.com')
+                input#inputEmail.form-control(type='email', name='inputEmail', placeholder='name@example.com')
                 label(for='inputEmail') Adresse Mail
             .form-floating
-                input#inputPassword.form-control(type='password', placeholder='Password')
+                input#inputPassword.form-control(type='password', name='inputPassword', placeholder='Password')
                 label(for='inputPassword') Mot de Passe
             a.link-primary(href='/login') D&eacute;j&agrave; inscris ? Connecte toi.
-            button.w-100.btn.btn-lg.btn-primary(type='submit') Inscription
+            button.w-100.btn.btn-lg.btn-primary(type='submit', value="New_account") Connexion

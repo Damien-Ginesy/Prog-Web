@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path');
+const fs = require('fs')
+const {openDb} = require("./db")
 const session = require('express-session')
 const SQLiteStore = require('connect-sqlite3')(session);
 
 
 const app = express()
 const bodyParser = require('body-parser');
+const { time } = require('console');
 const port = 3000
 
 const sess = {
@@ -20,9 +23,9 @@ const sess = {
 }
 
 const authentification = {
-    pseudo: "Titi",
-    email: "TinoRossi@wanadoo.fr",
-    password: "Marinella"
+    pseudo: "Bob",
+    email: "bob@wanadoo.fr",
+    password: "123456"
 }
 
 if (app.get('env') === 'production') {
@@ -30,48 +33,118 @@ if (app.get('env') === 'production') {
     sess.cookie.secure = true // serve secure cookies
 }
 app.use(session(sess));
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', './views');
 app.set('view engine', 'jade');
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+function Date_parser(date){
+    date = Math.floor(date/1000)
+    jour = Math.floor(date/(3600*24))
+    heure = Math.floor((date-(jour*3600*24))/3600)
+    minute = Math.floor((date - (jour*3600*24)-(heure*3600))/60)
+    if(jour !== 0){
+        return jour+" days "
+    }
+    else if(heure !== 0){
+        return heure+" hours "
+    }
+    else if (minute !== 0){
+        return minute+ " minutes "
+    }
+    else{
+        return date+" secondes"
+    }
+}
+
+
+
 
 app.get('/login',(req, res) => {
     res.render('login')
 })
 
-app.post('/login',(req,res)=>{
-    const email = req.body.inputEmail
-    const password = req.body.inputPassword
-    if(email == authentification.email&& password == authentification.password){
+app.post('/login',async(req,res)=>{
+    const email = req.body.inputEmailLogin
+    const password = req.body.inputPasswordLogin
+    const db = await openDb()
+    const user = await db.get(`SELECT * FROM Users WHERE email = ? AND password = ?`,
+    [email,password])
+    if(user !== null)
+    {
         req.session.logged = true
+        let current_user = {
+            id: user.id,
+            pseudo: user.pseudo,
+            email:user.email,
+            password:user.password
+        }
+        let data = JSON.stringify(current_user)
+        fs.writeFileSync('current_user.json',data)
     }
     res.redirect(302,'/')
 })
 
-app.post('/logout',(req, res) => {
-    req.session.logged = false
+app.get('/logout',(req, res) => {
+    if(req.session.logged){
+        req.session.logged = false
+        let current_user = {
+            id: 0,
+            pseudo: "test",
+            email: "test",
+            password: "test"
+        }
+        let data = JSON.stringify(current_user)
+        fs.writeFileSync('current_user.json',data)
+    }
     res.redirect(302,'/login')
-  })
+})
 
 app.get('/new_account',(req,res)=>{
     res.render('new_account')
 })
 
-app.post('/new_account',(req,res) =>{
-    authentification.pseudo = req.body.inputPseudo
-    authentification.email = req.body.inputEmail
-    authentification.password = req.body.inputPassword
+app.post('/new_account',async(req,res) =>{
+    pseudo = req.body.inputPseudo
+    email = req.body.inputEmail
+    password = req.body.inputPassword
+    const db = await openDb()
+    await db.run(`INSERT INTO Users(pseudo,email,password) VALUES(?,?,?)`,[pseudo,email,password])
     res.redirect(302,'/login')
+})
 
+app.get('/my_account',(req,res) =>{
+    if(req.session.logged == false){
+        res.redirect(302,'/login')
+    }
+    else{
+        let user = require('./current_user.json')
+        res.render('my_account',{pseudo:user.pseudo,email:user.email})
+    }
+    
 })
 
 app.get('/',async(req,res)=>{
+    let save_user = require('./current_user.json')
+    if(save_user.id !== 0){
+        req.session.logged = true
+    }
     if(!req.session.logged){
         res.redirect(302,'/login')
     }
     else{
-        res.render('home_page')
+        const db = await openDb()
+        posts = await db.all(`SELECT * FROM Posts LEFT JOIN Users ON Users.id = Posts.createur`)
+        var time_array = []
+        for(post of posts){
+            var time_now =  Date.now()
+            time_now = time_now - post.time
+            date = Date_parser(time_now)
+            time_array.push(date)
+
+        }
+        res.render('home_page',{posts:posts,time:time_array})
     }
 })
 

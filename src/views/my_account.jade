@@ -1,0 +1,21 @@
+extends layout
+
+block title 
+    title Mon Compte
+
+block append head 
+    link(rel='stylesheet', href='/styles/my_account.css', type='text/css')
+
+block body 
+    main.form-account
+        form
+            img.mb-4(src='/images/perm_identity_black_24dp.svg', alt='', width='80', height='80')
+            .mb-3.row
+                label.col-sm-2.col-form-label(for='staticPseudo') Pseudo:
+                .col-sm-10
+                    input#staticPseudo.form-control-plaintext(type='text', readonly='', value=pseudo)
+            .mb-3.row
+                label.col-sm-2.col-form-label(for='staticEmail') Email:
+                .col-sm-10
+                    input#staticEmail.form-control-plaintext(type='text', readonly='', value=email)
+            a.link-primary(href='/logout') D&eacute;connexion
