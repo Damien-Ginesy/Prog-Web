@@ -20,18 +20,28 @@ async function createUsers(db){
 }
 
 async function createPosts(db){
-    const insertRequest = await db.prepare("INSERT INTO Posts(title,lien,image,text,commentaire,time,createur) VALUES(?,?,?,?,?,?,?)")
+    const insertRequest = await db.prepare("INSERT INTO Posts(title,lien,image,text,commentaire,time,votes,createur) VALUES(?,?,?,?,?,?,?,?)")
     const posts = [{
-        title: "google",
-        lien:"www.google.fr",
-        image:null,
-        text:"",
+        title: "Napoléon 1er",
+        lien:"https://fr.wikipedia.org/wiki/Napol%C3%A9on_Ier",
+        image:"/images/Napoleon_Ier_en_costume_du_Sacre.jpg",
+        text:"Napoléon Bonaparte, né le 15 août 1769 à Ajaccio et mort le 5 mai 1821 sur l'île Sainte-Hélène, est un militaire et homme d'État français, premier empereur des Français du 18 mai 1804 au 6 avril 1814 et du 20 mars au 22 juin 1815, sous le nom de Napoléon Ier.",
         commentaire:"",
-        time:Date.now()/1000,
+        time:Date.now(),
+        votes: 0,
         createur:1
+    },{
+        title: "Tino Rossi",
+        lien:"https://fr.wikipedia.org/wiki/Tino_Rossi",
+        image:"/images/tino_rossi_melody_ina_600.jpg",
+        text:"Constantin Rossi, dit Tino Rossi, est un chanteur et acteur français, né le 29 avril 1907 à Ajaccio (Corse) et mort le 27 septembre 1983 à Neuilly-sur-Seine (Hauts-de-Seine). Sa chanson Petit Papa Noël, sortie en 1946, demeure la chanson la plus vendue de l'histoire en France.",
+        commentaire:"",
+        time:Date.now(),
+        votes: 0,
+        createur:2
     }]
     return await Promise.all(posts.map(post => {
-        return insertRequest.run([post.title,post.lien,post.image,post.text,post.commentaire,post.time,post.createur])
+        return insertRequest.run([post.title,post.lien,post.image,post.text,post.commentaire,post.time,post.votes,post.createur])
     }))
 }
 
@@ -53,6 +63,7 @@ async function createTables(db){
             text text,
             commentaire text,
             time int,
+            votes int,
             createur int,
             FOREIGN KEY(createur) REFERENCES Users(id)
           )

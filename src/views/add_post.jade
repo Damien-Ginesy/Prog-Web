@@ -1,0 +1,24 @@
+extends layout 
+
+block title 
+  title Ajout de lien
+block append head
+  link(rel='stylesheet', href='/styles/add_post.css', type='text/css')
+
+block body
+    .main_data
+        h2 Formulaire d'ajout de lien
+        form(method='POST', action='/add_post')
+            .input-group.mb-3
+                span#basic-addon1.input-group-text Titre
+                input.form-control(type='text', placeholder='Titre',name = "titre", aria-label='Titre', aria-describedby='basic-addon1')
+            .input-group.mb-3
+                span#basic-addon2.input-group-text Lien
+                input.form-control(type='text', placeholder='Lien',name = "lien", aria-label='Lien', aria-describedby='basic-addon2')
+            .input-group.mb-3
+                span#basic-addon3.input-group-text image
+                input#basic-url.form-control(type='text',placeholder="URL de l'image",name = 'image', aria-label='Image',aria-describedby='basic-addon3')
+            .input-group
+                span.input-group-text Texte
+                textarea.form-control(placeholder = "Description du lien",name='texte',aria-label='Texte')
+            button.w-100.btn.btn-lg.btn-primary(type='submit', value="add_post") Créer

@@ -7,16 +7,17 @@ block append head
   link(rel='stylesheet', href='/styles/home.css', type='text/css')
 
 block body
-    nav.navbar
+    nav.navbar.navbar-expand-lg 
       .container-fluid
         a.navbar-brand
           img.d-inline-block.align-text-top(src='https://waisso.com/wp-content/uploads/2019/04/reddit-logo-300x225.jpg', alt='', width='30', height='24')
         a.position.navbar-brand Redeirb
-        |             
-        |             
-        form(action='/', method='POST')
-          input#site-search(type='search', name='search', placeholder='Search', size='75')
-        |             
+                
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon  
+        #navbarNavAltMarkup.collapse.navbar-collapse
+          .navbar-nav
+            a.nav-link.active(aria-current='page', href='/add_post') Ajouter un lien           
         a.navbar-brand(href='/my_account')
           img.d-inline-block.align-text-top(src='/images/account_circle_black_24dp.svg', alt='', width='30', height='24')
     |   
@@ -25,8 +26,9 @@ block body
     |
     each post,index in posts   
       .card.container.mb-3(style='width: 28rem;')
-        .card-header.card_back(style='width: 28rem;')="Posted by "+post.pseudo+", "+time[index]+" ago"
-        img.card-img-top(src=post.image, alt=, width='300px', height='200px')
+        if post.image !== null
+          .card-header.card_back(style='width: 28rem;')="Posted by "+post.pseudo+", "+time[index]+" ago"
+          img.card-img-top(src=post.image, alt=, width='300px', height='300px')
         |       
         .card-body.text-center
           h5.card-title= post.title
@@ -37,6 +39,9 @@ block body
         |       
         .card-footer.text-muted.card_back(style='width: 28rem;')
           p.card-text
-            small.text-muted.btn.card_button Comments 
-            small.text-muted.btn.card_button Share
-            small.text-muted.btn.card_button Save
+            h6
+              a.card-link.text-muted(href='#') Commenter
+              a.card-link.text-muted(href='#') Partager
+              a.card-link.text-muted(href='/vote_up/'+post.id) Vote up 
+              a.card-link.text-muted(href='/vote_down'+post.id) Vote down 
+
