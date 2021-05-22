@@ -24,11 +24,17 @@ body {
 .container {
     display: flex;
     border-bottom-style: solid;
-    border-bottom-width: 4px;
-    align-items: center;
-    justify-content: center;
+    
 }
+
+.card_hov:hover{
+    border-color: black;
+    border-width: 2px;
+}
+
+
 
 .navbar-brand{
     font-size:x-large;
+    text-align: left;
 }
