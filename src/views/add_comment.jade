@@ -1,0 +1,15 @@
+extends layout 
+
+block title 
+  title Ajout de commentaire
+block append head
+  link(rel='stylesheet', href='/styles/add_post.css', type='text/css')
+
+block body
+    .main_data
+        h2 Ajout d'un commentaire
+        form(method='POST', action='/add_post')
+            .input-group
+                span.input-group-text Texte
+                textarea.form-control(placeholder = "Commentaire",name='texte',aria-label='Texte')
+            button.w-100.btn.btn-lg.btn-primary(type='submit', value="add_post") Ajouter

@@ -25,9 +25,9 @@ block body
     |   
     |
     each post,index in posts   
-      .card.container.mb-3(style='width: 28rem;')
+      .card.container.card_hov.mb-3(style='width: 28rem;')
         if post.image !== null
-          .card-header.card_back(style='width: 28rem;')="Posted by "+post.pseudo+", "+time[index]+" ago"
+          .card-body.card_back="Posted by "+post.pseudo+", "+time[index]+" ago"
           img.card-img-top(src=post.image, alt=, width='300px', height='300px')
         |       
         .card-body.text-center
@@ -37,11 +37,11 @@ block body
           |           
           a(href=post.lien)=post.lien
         |       
-        .card-footer.text-muted.card_back(style='width: 28rem;')
+        .card-body.text-muted.card_back
           p.card-text
             h6
-              a.card-link.text-muted(href='#') Commenter
+              a.card-link.text-muted(href='/comment') Commenter
               a.card-link.text-muted(href='#') Partager
-              a.card-link.text-muted(href='/vote_up/'+post.id) Vote up 
-              a.card-link.text-muted(href='/vote_down/'+post.id) Vote down 
+              a.card-link.text-muted(href='/vote_up/'+post.id)  ↑ Vote up 
+              a.card-link.text-muted(href='/vote_down'+post.id) ↓ Vote down 
 

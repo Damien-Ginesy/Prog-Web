@@ -1,0 +1,37 @@
+extends layout
+
+block title 
+  title Commentaires
+
+block append head
+  link(rel='stylesheet', href='/styles/comment.css', type='text/css')
+
+block body
+    nav.navbar.navbar-expand-lg 
+      .container-fluid
+        a.navbar-brand
+          img.d-inline-block.align-text-top(src='https://waisso.com/wp-content/uploads/2019/04/reddit-logo-300x225.jpg', alt='', width='30', height='24')
+        a.position.navbar-brand Redeirb
+                
+        button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon  
+        #navbarNavAltMarkup.collapse.navbar-collapse
+          .navbar-nav
+            a.nav-link.active(aria-current='page', href='/add_comment') Ajouter un commentaire        
+        a.navbar-brand(href='/my_account')
+          img.d-inline-block.align-text-top(src='/images/account_circle_black_24dp.svg', alt='', width='30', height='24')
+    |   
+    |   
+    |   
+    |      
+    .card.container.card_hov.mb-3(style='width: 45rem;')  
+        
+        .card-body.card-text.card_back Comment by name,time ago
+        .card-body.card-text Le commentaire
+
+
+    .card.container.card_hov.mb-3(style='width: 45rem;')   
+        .card-body.card-text.card_back Comment by name,time ago
+        .card-body.card-text Le commentaire
+            
+

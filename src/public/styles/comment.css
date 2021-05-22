@@ -9,6 +9,9 @@ body {
     background-color:#ffffff;
 }
 
+.card{
+    margin-top: 4px;
+}
 
 .card_back{
     background-color:#ffffff;

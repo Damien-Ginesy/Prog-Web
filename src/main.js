@@ -178,6 +178,13 @@ app.get('/vote_down/:id',async(req,res)=>{
     vote = post.votes-1
     await db.run(`UPDATE Posts SET votes=? WHERE id=?`,[vote,req.params.id]);
     res.redirect(302,'/');
+})   
+app.get('/comment',(req,res)=>{
+    res.render('comment_page')
+})
+
+app.get('/add_comment',(req,res)=>{
+    res.render('add_comment')
 })
 
 app.get('/',async(req,res)=>{
