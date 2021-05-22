@@ -148,6 +148,14 @@ app.get('/vote_up/:id',async(req,res)=>{
     res.redirect(302,'/');
 })
 
+app.get('/comment',(req,res)=>{
+    res.render('comment_page')
+})
+
+app.get('/add_comment',(req,res)=>{
+    res.render('add_comment')
+})
+
 app.get('/',async(req,res)=>{
     let rawdata = fs.readFileSync('current_user.json');
     let save_user = JSON.parse(rawdata);
