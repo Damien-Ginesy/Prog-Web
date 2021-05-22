@@ -1,0 +1,43 @@
+html,
+body {
+    height: 100%;
+    background-color: gray;
+}
+
+.navbar{
+    width: 100%;
+    background-color:#ffffff;
+}
+
+.card{
+    margin-top: 4px;
+}
+
+.card_back{
+    background-color:#ffffff;
+    color: rgb(160, 158, 158);
+    font-size: smaller;
+    border: ghostwhite;
+}
+
+.card_button:hover {
+    background-color: rgb(172, 160, 160);
+}
+
+.container {
+    display: flex;
+    border-bottom-style: solid;
+    
+}
+
+.card_hov:hover{
+    border-color: black;
+    border-width: 2px;
+}
+
+
+
+.navbar-brand{
+    font-size:x-large;
+    text-align: left;
+}
