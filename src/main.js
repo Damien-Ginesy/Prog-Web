@@ -60,12 +60,13 @@ function Date_parser(date){
 }
 
 app.get('/login',(req, res) => {
-    res.render('login')
+    res.render('login',{errors:""})
 })
 
 app.post('/login',async(req,res)=>{
     const email = req.body.inputEmailLogin
     const password = req.body.inputPasswordLogin
+    let data = {}
     const db = await openDb()
     const user = await db.get(`SELECT * FROM Users WHERE email = ? AND password = ?`,
     [email,password])
@@ -80,6 +81,12 @@ app.post('/login',async(req,res)=>{
         }
         let data = JSON.stringify(current_user)
         fs.writeFileSync('current_user.json',data)
+    }
+    else{
+        data = {
+            errors: "Mot de passe ou identifiant incorrect"
+        }
+        res.render('login',data)
     }
     res.redirect(302,'/')
 })
@@ -100,16 +107,33 @@ app.get('/logout',(req, res) => {
 })
 
 app.get('/new_account',(req,res)=>{
-    res.render('new_account')
+    res.render('new_account',{errors:""})
 })
 
 app.post('/new_account',async(req,res) =>{
     pseudo = req.body.inputPseudo
     email = req.body.inputEmail
     password = req.body.inputPassword
-    const db = await openDb()
-    await db.run(`INSERT INTO Users(pseudo,email,password) VALUES(?,?,?)`,[pseudo,email,password])
-    res.redirect(302,'/login')
+    let data = {}
+    if(pseudo.length <= 4){
+        data = {
+            errors: "Le pseudo doit contenir plus de 4 caractères"
+        }
+    }
+    else if (password.length < 6){
+        data = {
+            errors: "Le mot de passe doit contenir au minimum 6 caractères"
+        }
+    }
+    if(data.errors){
+        res.render("new_account",data)
+    }
+    else{
+        const db = await openDb()
+        await db.run(`INSERT INTO Users(pseudo,email,password) VALUES(?,?,?)`,[pseudo,email,password])
+        res.redirect(302,'/login')
+    }
+    
 })
 
 app.get('/my_account',(req,res) =>{
@@ -148,6 +172,14 @@ app.get('/vote_up/:id',async(req,res)=>{
     res.redirect(302,'/');
 })
 
+app.get('/vote_down/:id',async(req,res)=>{
+    const db = await openDb()
+    const post = await db.get(`SELECT votes FROM Posts WHERE id=?`,[req.params.id])
+    vote = post.votes-1
+    await db.run(`UPDATE Posts SET votes=? WHERE id=?`,[vote,req.params.id]);
+    res.redirect(302,'/');
+})
+
 app.get('/',async(req,res)=>{
     let rawdata = fs.readFileSync('current_user.json');
     let save_user = JSON.parse(rawdata);
@@ -166,7 +198,6 @@ app.get('/',async(req,res)=>{
             time_now = time_now - post.time
             date = Date_parser(time_now)
             time_array.push(date)
-
         }
         res.render('home_page',{posts:posts,time:time_array})
     }

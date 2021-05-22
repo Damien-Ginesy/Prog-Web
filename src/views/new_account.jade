@@ -5,7 +5,10 @@ block title
 block append head 
     link(rel='stylesheet', href='/styles/login.css', type='text/css')
 
-block body  
+block body
+    if errors
+        div.p-2.alert.alert-danger
+            h4=errors
     main.form-login
         form(method='POST', action='/new_account')
             img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')

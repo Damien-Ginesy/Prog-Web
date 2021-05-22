@@ -7,6 +7,9 @@ block append head
 
 block body  
   main.form-login
+    if errors
+      div.p-2.alert.alert-danger
+        h4=errors
     form(method='POST', action='/login')
       img.mb-4(src='/images/account_circle_black_24dp.svg', alt='', width='80', height='80')
       h1.h3.mb-3.fw-normal Connectez vous
