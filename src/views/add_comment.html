@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Ajout de commentaire</title>
+
+    <link rel="stylesheet" href="/styles/add_post.css" type="text/css"/>
+  </head>
+  
+    <div class="main_data">
+        <h2>Ajout d'un commentaire</h2>
+        <form method="POST" action="/add_post">
+            <div class="input-group"><span class="input-group-text">Texte</span>
+                <textarea placeholder="Commentaire" name="texte" aria-label="Texte" class="form-control"></textarea>
+            </div>
+            <button type="submit" value="add_post" class="w-100 btn btn-lg btn-primary">Ajouter</button>
+        </form>
+    </div>
+</html>
