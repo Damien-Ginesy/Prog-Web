@@ -4,7 +4,7 @@
   "dependencies": {
     "clean-css": "^5.1.2",
     "constantinople": "^4.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.1",
     "jade": "^0.29.0",
     "sqlite3": "^5.0.2",
